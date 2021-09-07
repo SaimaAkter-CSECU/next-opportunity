@@ -1,0 +1,294 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+a {
+  text-decoration: none;
+  color: inherit !important;
+}
+
+body {
+  font-family: "Open Sans", sans-serif !important;
+}
+body .v-application {
+  font-family: "Roboto", sans-serif !important;
+}
+body .v-application .section-title-div {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+  color: #222;
+}
+body .v-application .section-title-div .v-icon {
+  color: #02b3e4;
+}
+body .v-application .section-title-div .section-title {
+  padding-bottom: 13px;
+  font-size: 1.125rem;
+  font-weight: 400;
+  font-family: "Open Sans";
+  border-bottom: 1px solid #222;
+}
+body .v-application p {
+  font-size: 1.125rem;
+  font-weight: 300;
+}
+body .v-application h1 {
+  font-size: 3.5rem;
+  font-family: "Open Sans";
+  font-weight: 700;
+}
+body .v-application h2 {
+  font-size: 1.125rem;
+  font-weight: thin;
+}
+body .v-application h3 {
+  font-size: 1.35rem;
+  font-family: "Open Sans";
+  word-break: break-word;
+}
+body .v-application h4 {
+  font-size: 1.25rem;
+  font-weight: 300;
+}
+body .v-application h5 {
+  font-size: 1.125rem;
+  font-weight: thin;
+}
+body .v-application h6 {
+  font-size: 1.125rem;
+  font-weight: thin;
+}
+
+.nav .v-btn {
+  padding: 2rem 1rem !important;
+}
+.nav .v-btn:hover {
+  background: rgba(0, 0, 0, 0.5) !important;
+  color: white !important;
+}
+.nav .v-btn[aria-expanded=true] {
+  background: rgba(0, 0, 0, 0.5) !important;
+  color: white !important;
+}
+.nav .searchDiv {
+  background: whitesmoke !important;
+}
+.nav .browseBtn {
+  top: 64px !important;
+}
+.nav .v-menu__content {
+  top: 64px !important;
+  background: rgba(0, 0, 0, 0.5) !important;
+  overflow-y: auto;
+}
+
+.nav-list .v-list-item {
+  border-bottom: 1px solid white !important;
+  padding-right: 0;
+}
+
+/*********** Banner Starts *************/
+#banner {
+  background-color: #642b73;
+  background-image: linear-gradient(130deg, #c6426e 0%, #642b73 90%);
+  min-height: 100.413vh;
+  position: relative;
+}
+#banner .banner-text {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+#banner .banner-text .post-text:hover {
+  color: #2880b9;
+}
+#banner .banner-text .v-form {
+  border-radius: 4px;
+  background-color: rgba(255, 255, 255, 0.9);
+}
+#banner .banner-text .v-form .v-text-field__details {
+  display: none;
+}
+
+/*********** Banner Ends *************/
+/*********** Category Starts *************/
+#category .category-div {
+  color: #999;
+  border-bottom: 2px solid transparent;
+}
+#category .category-div .v-icon {
+  color: #999;
+}
+#category .category-div:hover {
+  color: #2c3e50;
+  border-bottom: 2px solid #2c3e50;
+}
+#category .category-div:hover .v-icon {
+  color: #da2128;
+}
+
+/*********** Category Ends *************/
+/*********** Events Starts *************/
+#events .v-card {
+  border: 2px solid #ebebeb;
+  border-radius: 4px;
+  font-family: "Open Sans", sans-serif;
+}
+#events .v-card .category {
+  font-size: 13px;
+  color: #aaa;
+}
+#events .v-card .v-card__title {
+  font-size: 20px;
+  line-height: 24px;
+  min-height: 7rem;
+}
+#events .v-card .v-card__actions {
+  font-size: 14px;
+  background: #d6d9da;
+  color: #444;
+}
+#events .v-card:hover {
+  border: 2px solid #485f77;
+}
+
+/*********** Events Ends *************/
+/*********** Upcoming Events Starts *************/
+#deadlineEvents .v-card, #latestEvents .v-card, #trendingEvents .v-card {
+  box-shadow: none;
+  color: #2c3e50;
+}
+#deadlineEvents .v-card .v-list-item__content, #latestEvents .v-card .v-list-item__content, #trendingEvents .v-card .v-list-item__content {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+#deadlineEvents .v-card .v-list-item__content .v-list-item__title, #latestEvents .v-card .v-list-item__content .v-list-item__title, #trendingEvents .v-card .v-list-item__content .v-list-item__title {
+  white-space: unset;
+}
+#deadlineEvents .v-card .v-list-item__content .v-list-item__title .v-icon, #latestEvents .v-card .v-list-item__content .v-list-item__title .v-icon, #trendingEvents .v-card .v-list-item__content .v-list-item__title .v-icon {
+  color: #999;
+}
+#deadlineEvents .v-card .v-list-item__content .v-list-item__title:hover, #latestEvents .v-card .v-list-item__content .v-list-item__title:hover, #trendingEvents .v-card .v-list-item__content .v-list-item__title:hover {
+  color: #da2128;
+}
+#deadlineEvents .v-card:hover .v-icon, #latestEvents .v-card:hover .v-icon, #trendingEvents .v-card:hover .v-icon {
+  color: #485f77;
+}
+
+.trendingItems {
+  max-height: 650px;
+  overflow-y: auto;
+}
+
+.trendingItems::-webkit-scrollbar {
+  width: 12px;
+}
+
+.trendingItems::-webkit-scrollbar-track {
+  border-radius: 0;
+  background: #f5f5f5;
+}
+
+.trendingItems::-webkit-scrollbar-track {
+  border-radius: 0;
+  background: #f5f5f5;
+}
+
+.trendingItems::-webkit-scrollbar-thumb {
+  border-radius: 0;
+  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.5);
+  background: #444;
+}
+
+/*********** Upcoming Events Ends *************/
+/*********** Featured Starts *************/
+#featured {
+  background-color: #ebebeb;
+  padding-top: 40px;
+  padding-bottom: 40px;
+  border-top: 1px solid #e5e5e5;
+  color: #222;
+}
+#featured .featured-text {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+}
+#featured .featured-text span {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.45);
+  padding-bottom: 20px;
+}
+
+/*********** Featured Ends *************/
+/*********** Footer Starts *************/
+#footer {
+  border-top: 1px solid #272c33;
+  background-color: #3f4651;
+}
+#footer .footer-list-title {
+  border-bottom: 1px solid #333;
+}
+#footer .v-list .v-list-item {
+  border-bottom: 1px solid #333;
+}
+#footer .v-list .v-list-item .v-list-item__title {
+  color: #c2c8d0;
+  font-size: 1.15rem;
+  font-weight: 300;
+}
+#footer .v-list .v-list-item .v-list-item__title:hover {
+  color: white;
+}
+#footer .social-icons a .v-icon {
+  color: #c2c8d0;
+}
+#footer .social-icons a .v-icon:hover {
+  color: white;
+}
+
+/*********** Footer Ends *************/
+#SubPageBanner {
+  background-color: rgba(0, 0, 0, 0.4);
+  background-blend-mode: multiply;
+  border-bottom: 1px solid #e5e5e5;
+  background-image: url(https://static.youthop.com/uploads/2017/02/bg_pattern.png);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center center;
+  padding-top: 6.25rem;
+  padding-bottom: 6.25rem;
+}
+
+#SubPageSidebar .v-text-field__details {
+  display: none;
+}
+#SubPageSidebar .sidebarSectionTitle {
+  border-bottom: 1px solid #e5e5e5;
+  color: #222;
+}
+#SubPageSidebar .v-list-item__content {
+  border-bottom: 1px solid #e5e5e5;
+  min-width: 260px;
+  max-width: 100%;
+  -webkit-line-clamp: unset !important;
+  color: #2c3e50;
+  font-family: "Open Sans";
+  padding-top: 0;
+}
+#SubPageSidebar .v-list-item__content .v-list-item__title:hover {
+  color: #da2128;
+}
+
+#about .v-expansion-panel--active > .v-expansion-panel-header {
+  min-height: 30px;
+}
+
+#faqs .theme--light.v-tabs-items {
+  background-color: #fafafa;
+  border-top: 1px solid #e5e5e5;
+}
+
+#join p {
+  color: #222;
+  line-height: 1.75rem;
+}/*# sourceMappingURL=style.css.map */
