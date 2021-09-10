@@ -15,7 +15,7 @@
                     height="90"
                 >
                 </v-img>
-                <h4 class="mt-7 font-weight-regular">Youth Opportunities Bangladesh</h4>
+                <h5 class="mt-7 text-center font-weight-regular">Youth Opportunities Bangladesh</h5>
                 <p class="primary--text mt-3" >
                     <a href="#">Website</a> | <a href="#">Facebook Group</a>
                 </p>
@@ -32,7 +32,7 @@
                     height="90" 
                 >
                 </v-img>
-                <h4 class="mt-7 font-weight-regular">Youth Opportunities Indonesia</h4>
+                <h5 class="mt-7 text-center font-weight-regular">Youth Opportunities Indonesia</h5>
                 <p class="primary--text mt-3" >
                     <a href="#">Website</a> | <a href="#">Facebook Group</a>
                 </p>

@@ -31,7 +31,7 @@
                             <p class="">
                                 <small>{{trending.category}}</small>
                             </p>
-                            <v-list-item-title class="text-p font-weight-thin my-3">
+                            <v-list-item-title class="text-p font-weight-thin my-3" style="line-height:1.5 !important">
                                 <router-link to="">
                                     {{trending.title}}
                                 </router-link>

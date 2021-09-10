@@ -1,8 +1,12 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Home from '../components/Home.vue'
+
+import Browse from '../components/Browse.vue'
 import InfoPage from '../components/InfoPages/InfoPage.vue'
 
+import Opportunity from '../components/InfoPages/Opportunity.vue'
+import Post from '../components/InfoPages/Post.vue'
 import About from '../components/InfoPages/About.vue' 
 import Partners from '../components/InfoPages/Partners.vue'
 import FAQs from '../components/InfoPages/FAQs.vue'
@@ -22,11 +26,29 @@ const routes = [
         component: Home
     },
     {
+        path: '/Browse', 
+        name: 'Browse',
+        component: Browse,
+        meta: 'Browse Opportunities'
+    },
+    {
         path: '/InfoPage',
         redirect: '/About', 
         name: 'InfoPage',
         component: InfoPage,
         children: [
+            {
+                path: '/Post',
+                name: 'Post',
+                component: Post, 
+                meta: 'Post an Opportunity',
+            },
+            {
+                path: '/Opportunity',
+                name: 'Opportunity',
+                component: Opportunity, 
+                meta: '',
+            },
             {
                 path: '/About',
                 name: 'About',

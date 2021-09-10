@@ -1,12 +1,12 @@
 <template>
     <div
-        id="contact"
+        id="contact" 
+        width="90%"
     >
         <v-form
             ref="form"
             v-model="valid"
             lazy-validation
-            width="90%"
         >
             <v-text-field
                 v-model="name"

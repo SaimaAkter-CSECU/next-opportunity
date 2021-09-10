@@ -13,7 +13,7 @@
                                 <span class="text-uppercase">{{event.category}}</span>
                             </v-card-text>
                             <v-card-title class="pt-0">
-                                <h3> {{event.title}} </h3>
+                                <h5> {{event.title}} </h5>
                             </v-card-title>
                                 <v-card-actions>
                                     <v-card-text class="py-1">
@@ -91,18 +91,16 @@
         swiperOption: {
             slidesPerView: 3,
             spaceBetween: 30,
-            // loop: true,
-            // autoplay: {
-            //     delay: 5000,
-            //     stopOnLastSlide: false,
-            //     disableOnInteraction: true
-            // },
             speed: 800,
             breakpoints: {
                 900: {
-                    slidesPerView: 2,
+                    slidesPerView: 3,
                     spaceBetween: 10
                 },
+                768: {
+                    slidesPerView: 2,
+                    spaceBetween: 5
+                }, 
                 600: {
                     slidesPerView: 1,
                     spaceBetween: 0

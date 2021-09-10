@@ -1,7 +1,7 @@
 <template>
     <div id="trendingEvents">
         <v-row>
-            <v-col cols="12" sm="12" md="8">
+            <v-col cols="12" >
                 <div class="section-title-div pb-3" width="100%">
                     <span class="section-title">
                         <v-icon class="pr-3">mdi-flash</v-icon>
@@ -10,7 +10,7 @@
                 </div>
             </v-col>
         </v-row>
-        <v-row class="trendingItems">
+        <v-row class="trendingItems" style="min-width: 350px; max-width: 100%;">
             <v-col cols="12" sm="12" class="pb-0" v-for="TrendingEvent in TrendingEvents" :key="TrendingEvent.id">
                 <v-card
                     class="mx-auto"

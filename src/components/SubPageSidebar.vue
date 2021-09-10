@@ -18,10 +18,11 @@
                 </v-btn>
             </div>
             <div class="mb-5 sidebarYoutubeLink">
-                <h4 class="sidebarSectionTitle py-3">YO Hits</h4>
+                <h5 class="sidebarSectionTitle py-3 font-weight-thin">YO Hits</h5>
                 <div class="mt-5">
                     <iframe 
-                        width="100%" 
+                        min-width= "260"
+                        max-width="100%" 
                         height="200" 
                         src="https://www.youtube.com/embed/TFD6YbQX3-A" 
                         title="YouTube video player" 
@@ -37,7 +38,7 @@
                 </div>
             </div>
             <div class="mt-5">
-                <h4 class="sidebarSectionTitle py-3">Trending</h4>
+                <h5 class="sidebarSectionTitle py-3 font-weight-thin">Trending</h5>
                 <div
                     class="mt-5" 
                 >
@@ -76,7 +77,7 @@
                 </div>
             </div>
             <div class="mt-5">
-                <h4 class="sidebarSectionTitle py-3">Keep Connected</h4>
+                <h5 class="sidebarSectionTitle py-3 font-weight-thin">Keep Connected</h5>
                 <div
                     class="mt-5"
                 >

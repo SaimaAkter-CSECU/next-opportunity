@@ -34,7 +34,7 @@
                             v-bind="attrs"
                             v-on="on"
                         >
-                            <router-link to="/post">
+                            <router-link to="/Browse">
                                 Browse Opportunity   
                             </router-link>
                         </v-btn>
@@ -138,7 +138,7 @@
             </div>
             
 
-            <v-app-bar-nav-icon class="d-md-none d-sm-flex"></v-app-bar-nav-icon>
+            <v-app-bar-nav-icon class="d-md-none d-sm-flex justify-end"></v-app-bar-nav-icon>
         </v-container>
     </v-app-bar>
 </template>

@@ -35,20 +35,20 @@ body {
             font-weight: 700;
         }
         h2{
-            font-size: 1.125rem; 
+            font-size: 2.75rem; 
             font-weight: thin;
         }
         h3{
-            font-size: 1.35rem;
+            font-size: 2.25rem;
             font-family: 'Open Sans';
             word-break: break-word;
         }
         h4{
-            font-size: 1.25rem; 
+            font-size: 2rem; 
             font-weight: 300;
         }
         h5{
-            font-size: 1.125rem; 
+            font-size: 1.35rem; 
             font-weight: thin;
         } 
         h6{
@@ -180,6 +180,7 @@ body {
             border-bottom: 1px solid rgba(0,0,0,.1);
             .v-list-item__title{
                 white-space: unset;
+                line-height: 1.5;
                 .v-icon{
                     color: #999; 
                 }
@@ -277,57 +278,152 @@ body {
 
 
 
-
-
-
-
-#SubPageBanner{
-    background-color: rgba(0,0,0,.4);
-    background-blend-mode: multiply;
-    border-bottom: 1px solid #e5e5e5;
-
-    background-image: url(https://static.youthop.com/uploads/2017/02/bg_pattern.png);
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: center center;
-    padding-top: 6.25rem; 
-    padding-bottom: 6.25rem;
-}
-#SubPageSidebar{
-    .v-text-field__details{
-        display: none; 
-    }
-    .sidebarSectionTitle{
-        border-bottom: 1px solid #e5e5e5; 
-        color: #222; 
-    }
-    .v-list-item__content{
-        border-bottom: 1px solid #e5e5e5; 
-        min-width: 260px;
-        max-width: 100%;
-        -webkit-line-clamp: unset !important;
-        color: #2c3e50; 
-        font-family: 'Open Sans'; 
-        padding-top: 0; 
-        .v-list-item__title:hover{
-            color: #da2128; 
+.subPages{
+    #SubPageHeader{
+        margin-bottom: 4.5rem; 
+        .v-toolbar{
+            height: 65px !important; 
+            border-bottom: 1px solid #ececec!important;
+            .v-toolbar__content{
+                height: 65px !important;
+                .v-image__image.v-image__image--contain{
+                    background-position: center left !important; 
+                }
+            }
         }
     }
-}
-#about{
-    .v-expansion-panel--active > .v-expansion-panel-header {
-        min-height: 30px;
+
+    #SubPageBanner{
+        // background-color: rgba(0,0,0,.4);
+        background-blend-mode: multiply;
+        border-bottom: 1px solid #e5e5e5;
+    
+        background-image: url(https://static.youthop.com/uploads/2017/02/bg_pattern.png);
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center center;
+        padding-top: 6.25rem; 
+        padding-bottom: 6.25rem;
+    }
+    #SubPageSidebar{
+        .v-text-field__details{
+            display: none; 
+        }
+        .sidebarSectionTitle{
+            border-bottom: 1px solid #e5e5e5; 
+            color: #222; 
+        }
+        .v-list-item__content{
+            border-bottom: 1px solid #e5e5e5; 
+            min-width: 280px;
+            max-width: 100%;
+            -webkit-line-clamp: unset !important;
+            color: #2c3e50; 
+            font-family: 'Open Sans'; 
+            padding-top: 0; 
+            .v-list-item__title:hover{
+                color: #da2128; 
+            }
+        }
+    }
+    
+    #infoPages{
+        #about{
+            .v-expansion-panel--active > .v-expansion-panel-header {
+                min-height: 30px;
+            }
+        }
+        #faqs{
+            .theme--light.v-tabs-items{
+                background-color: #fafafa; 
+                border-top: 1px solid #e5e5e5;
+            }
+        }
+        #join{
+            p{
+                color: #222; 
+                line-height: 1.75rem; 
+            }
+        }
+    }
+
+    #post{
+        .label{
+            background-color: rgb(249, 249, 249);
+            border-right: 1px solid #e1e1e1; 
+            border-bottom: 1px solid #e1e1e1; 
+        }
+        .text-field{
+            border-bottom: 1px solid #e1e1e1; 
+        }
+        // .v-input--switch__track.theme--light{
+        //     height: 3rem !important; 
+        //     width: 10rem !important; 
+        // }
+        // .v-input--switch__thumb.theme--light{
+        //     width: 2.5rem;
+        //     height: 1.5rem;
+        //     border-radius: 0; 
+        //     box-shadow: none !important
+        // }
+        // .v-input.v-input--switch--inset .v-input--switch__track:after {
+        //     content: "No";
+        //     font-size: 10px;
+        // }
+        
+        // .v-input.v-input--switch--inset.v-input--is-label-active.v-input--is-dirty .v-input--switch__track:after{
+        //    content: "Yes";
+        // }
+        // .v-input--switch--inset .v-input--switch__track, .v-input--switch--inset .v-input--selection-controls__input {
+        //     width: 7rem !important;
+        // }
+        // .v-input--switch.v-input--dense .v-input--switch__thumb {
+        //     width: 3rem;
+        //     height: 18px;
+        //     border-radius: 5px;
+        // }
+
     }
 }
-#faqs{
-    .theme--light.v-tabs-items{
-        background-color: #fafafa; 
-        border-top: 1px solid #e5e5e5;
+
+#browse{
+    .opportunity_fund{
+        display: inline-block;
+        position: absolute;
+        text-align: left;
+        font-weight: 700;
+        border-radius: 4px 0 0 4px;
+        top: 8px;
+        right: 0;
+        background: rgba(72,95,119,.8);
+    }
+    .v-card__title{
+        font-family: open sans !important; 
+        color: #2c3e50; 
+        font-weight: 600 !important;
+        font-size: 1.125rem;
+        cursor: pointer;
+        min-height: 150px; 
+        border-bottom: 1px solid #f7f7f7;
     }
 }
-#join{
-    p{
-        color: #222; 
-        line-height: 1.75rem; 
+#opportunity{
+    .application_process{
+        border: 2px solid #ebebeb;
+        border-radius: 2px;
+        background: #f5f5f5;
     }
+    .opportunity_quote{
+        border-left: 8px solid #f7f7f7; 
+    }
+}
+.backToTop{
+    position: fixed !important;
+    bottom: 20px !important;
+    right: 20px; 
+    background-color: rgba(0,0,0,0.4) !important;
+    color: #fff;  
+    z-index: 999; 
+    width: 40px !important;
+    height: 60px;
 }

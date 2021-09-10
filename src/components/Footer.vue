@@ -32,7 +32,7 @@
                 >
                     <v-list class="white--text" style="background-color: transparent;">
                         <v-list-item-title> 
-                            <h4 class="footer-list-title pt-3 pb-4 pl-4">Youth Opportunities</h4> 
+                            <h5 class="footer-list-title pt-3 pb-4 pl-4 font-weight-thin">Youth Opportunities</h5> 
                         </v-list-item-title>
                         <v-list-item v-for="youthListItem in yuothListItems" :key="youthListItem.title">
                             <v-list-item-title>
@@ -49,7 +49,7 @@
                 >
                     <v-list class="white--text contact" color="transparent">
                         <v-list-item-title> 
-                            <h4 class="footer-list-title pt-3 pb-4 pl-4">Contact</h4> 
+                            <h5 class="footer-list-title pt-3 pb-4 pl-4 font-weight-thin">Contact</h5> 
                         </v-list-item-title>
                         <v-list-item v-for="contactListItem in contactListItems" :key="contactListItem.title">
                             <v-list-item-title>
@@ -66,7 +66,7 @@
                 >
                     <v-list class="white--text" color="transparent">
                         <v-list-item-title> 
-                            <h4 class="mt-3 mb-4 pl-4">Keep Connected</h4> 
+                            <h5 class="mt-3 mb-4 pl-4 font-weight-thin">Keep Connected</h5> 
                         </v-list-item-title>
                         <v-list-item-content>
                             <v-row justify="space-around" class="my-3 px-3 social-icons">

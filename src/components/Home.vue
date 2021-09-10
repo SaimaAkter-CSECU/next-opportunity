@@ -1,7 +1,6 @@
 <template>
     <v-app app color="transparent">
         <Header />
-
         <v-main>
             <Banner />
             <Category />
@@ -9,6 +8,7 @@
             <UpcommingEvents />
             <Featured />
             <Footer />
+            <BackToTop />
         </v-main>
     </v-app>
 </template>
@@ -21,10 +21,11 @@
     import Events from './Events';
     import UpcommingEvents from './UpcommingEvents';
     import Footer from './Footer'; 
+    import BackToTop from './BackToTop';
     export default {
         name: 'Home', 
         components: {
-            Header, Banner, Footer, Featured, Category, Events, UpcommingEvents
+            Header, Banner, Footer, Featured, Category, Events, UpcommingEvents, BackToTop
         }
     }
 </script>
