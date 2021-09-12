@@ -19,14 +19,14 @@
                             :key="category1.id"
                             class="px-0"
                         >
-                            <router-link :to="category1.path">
+                            <div @click="opp(category1.id)">
                                 <div class="category-div text-center" width="100%">
                                     <v-icon x-large class="mb-3">{{category1.icon}}</v-icon>
                                     <p>
                                         <small>{{category1.title}}</small>
                                     </p>
-                                </div>
-                            </router-link>
+                                </div> 
+                            </div>
                         </v-col>
                     </v-row>
                 </v-col>
@@ -47,14 +47,14 @@
                             :key="category2.id"
                             class="px-0"
                         >
-                            <router-link :to="category2.path">
+                            <div @click="opp(category2.id)">
                                 <div class="category-div text-center" width="100%">
                                     <v-icon x-large class="mb-3">{{category2.icon}}</v-icon>
                                     <p>
                                         <small>{{category2.title}}</small>
                                     </p>
                                 </div>
-                            </router-link>
+                            </div>
                         </v-col>
                     </v-row>
                 </v-col>
@@ -120,5 +120,11 @@
                 },   
             ],
         }),
+        methods: {
+            async opp(i){
+                localStorage.setItem("opportunity", i); 
+                this.$router.push('/Browse');
+            }
+        },
     }
 </script>

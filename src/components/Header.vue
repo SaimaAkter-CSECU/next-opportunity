@@ -327,7 +327,8 @@
                 }, 500)
             },
             async opp(i){
-                console.log(i); 
+                localStorage.setItem("opportunity", i); 
+                this.$router.push('/Browse'); 
             }
         },
     }

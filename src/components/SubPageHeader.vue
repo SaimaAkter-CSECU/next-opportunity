@@ -42,23 +42,62 @@
                         :close-on-content-click="false"
                     >
                         <template v-slot:activator="{ on, attrs }">
-                            <v-btn
-                                text
-                                tile
-                                v-bind="attrs"
-                                v-on="on"
-                            >
-                                <router-link to="/Browse">
+                            
+                                <v-btn
+                                    text
+                                    tile
+                                    v-bind="attrs"
+                                    v-on="on"
+                                    class="routerBtn grey--text darken-4"
+                                    height="100%"
+                                >
                                     Browse Opportunity   
-                                </router-link>
-                            </v-btn>
+                                </v-btn>
+                            
                         </template>
                         <v-list class="nav-list1">
                             <div
                                 v-for="opportunity in opportunities"
                                 :key="opportunity.id"
                             >
-                                <v-list-item
+                                <v-hover :key="opportunity.id" close-delay="200" open-delay="200">
+                                    <v-list-item
+                                        v-if="opportunity.subList"
+                                        flat
+                                        slot-scope="{ hover }"
+                                        style="position: relative; border-bottom: 1px solid rgba(0,0,0,0.3);"
+                                        :ripple="false"
+                                        @click="opp(opportunity.id)"
+                                        class="pr-0"
+                                    >
+                                        <v-list-item-title style="line-height: 47px;" >{{ opportunity.title }}</v-list-item-title>
+                                        <!-- <NestedHeader :items="opportunities" v-if="hover" /> -->
+                                        <div v-if="hover" class="nested-menu offset-y">
+                                            <v-list v-for="subList in opportunity.subList" :key="subList.id"
+                                            >
+                                                <v-list-item
+                                                    @click="opp(subList.id)"
+                                                    class="pr-0"
+                                                    style="border-bottom: 1px solid rgba(0,0,0,0.3);"
+                                                >
+                                                    <v-list-item-title style="line-height: 47px;" >{{ subList.title }}</v-list-item-title>
+                                                </v-list-item>
+                                            </v-list>
+                                        </div>
+                                        
+                                    </v-list-item>
+
+                                    <v-list-item 
+                                        v-else 
+                                        flat
+                                        class="pr-0"
+                                        style="border-bottom: 1px solid rgba(0,0,0,0.3);"
+                                        @click="opp(opportunity.id)"
+                                    >
+                                        <v-list-item-title style="line-height: 47px;" >{{ opportunity.title }}</v-list-item-title>
+                                    </v-list-item>
+                                </v-hover>
+                                <!-- <v-list-item
                                     @click="opp(opportunity.id)"
                                     v-if="!opportunity.subList"
                                     class="pr-0"
@@ -100,18 +139,20 @@
                                             </v-list-item>
                                         </v-list>
                                     </v-menu>
-                                </v-list-item>
+                                </v-list-item> -->
                             </div>
                         </v-list>
                     </v-menu>
-                    <v-btn
-                        text
-                        tile
-                    >
-                        <router-link to="/Post">
+                    <router-link to="/Post">
+                        <v-btn
+                            text
+                            tile
+                            class="routerBtn grey--text darken-4"
+                            height="100%"
+                        >
                             Post an Opportunity   
-                        </router-link>
-                    </v-btn>
+                        </v-btn>
+                    </router-link>
                     <v-menu offset-y class="searchBtn">
                         <template v-slot:activator="{ on, attrs }">
                             <v-btn 
@@ -275,10 +316,13 @@
 
 <script>
     import logo from '../assets/image/yo_logo_icon.png';
+    // import NestedHeader from './NestedHeader.vue'
 
     export default {
         name: 'SubPageHeader',
-         
+        components: {
+            // NestedHeader
+        }, 
         data: () => ({
             logo: logo, 
             sideNavbar: false, 
@@ -441,7 +485,8 @@
         }), 
         methods: {
             async opp(i){
-                console.log(i); 
+                localStorage.setItem("opportunity", i); 
+                this.$router.push('/Browse');
             }
         },
     }
