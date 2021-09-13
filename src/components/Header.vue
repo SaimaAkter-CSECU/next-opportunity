@@ -22,7 +22,9 @@
             <v-spacer></v-spacer>
             <div class="nav">
                 <v-menu 
-                    open-on-hover
+                    bottom
+                    transition="slide-x-transition"
+                    close-delay="170"
                     offset-y 
                     class="browseBtn"
                 >
@@ -34,12 +36,19 @@
                             v-bind="attrs"
                             v-on="on"
                         >
-                            <router-link to="/Browse">
-                                Browse Opportunity   
-                            </router-link>
+                            Browse Opportunity   
+                            <v-icon class="ml-2">mdi-chevron-down</v-icon> 
                         </v-btn>
                     </template>
-                    <v-list class="nav-list">
+                    <v-list class="nav-list parent">
+                        <v-list-item
+                            class="pr-0"
+                            style="border-bottom: 1px solid rgba(255,255,255,0.7);"
+                        >
+                            <router-link to="/Browse">
+                                <v-list-item-title style="line-height: 47px;">Any Opportunity</v-list-item-title>
+                            </router-link>
+                        </v-list-item>
                         <div
                             v-for="opportunity in opportunities"
                             :key="opportunity.id"
@@ -48,7 +57,7 @@
                                 @click="opp(opportunity.id)"
                                 v-if="!opportunity.subList"
                                 class="pr-0"
-                                style="border-bottom: 1px solid rgba(255,255,255,0.1);"
+                                style="border-bottom: 1px solid rgba(255,255,255,0.7);"
                             >
                                 <v-list-item-title style="line-height: 47px;" >{{ opportunity.title }}</v-list-item-title>
                             </v-list-item>
@@ -56,7 +65,7 @@
                                 @click="opp(opportunity.id)"
                                 v-else
                                 class="pr-0"
-                                style="border-bottom: 1px solid rgba(255,255,255,0.1);"
+                                style="border-bottom: 1px solid rgba(255,255,255,0.7);"
                             >
                                 <v-menu 
                                     open-on-hover
@@ -68,15 +77,19 @@
                                             v-bind="attrs"
                                             v-on="on"
                                             style="line-height: 47px;" 
+                                            class="d-flex justify-space-between" 
                                         >
                                             {{ opportunity.title }}
+                                            <v-icon class="mr-2 white--text" color="white">mdi-plus</v-icon> 
                                         </v-list-item-title>
                                     </template>
-                                    <v-list>
+                                    <v-list class="child">
                                         <v-list-item
                                             v-for="subList in opportunity.subList"
                                             :key="subList.id"
                                             @click="opp(subList.id)"
+                                            class="pr-0"
+                                            style="border-bottom: 1px solid rgba(255,255,255,0.7);"
                                         >
                                             <v-list-item-title style="line-height: 47px;"  >{{ subList.title }}</v-list-item-title>
                                         </v-list-item>
@@ -355,6 +368,9 @@
         .v-list-item__title{
             color: white; 
         }
+    }
+    .parent:hover > .child{
+        display: block !important;
     }
 
 </style>
