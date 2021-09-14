@@ -1,159 +1,284 @@
 <template>
-    <v-app-bar
-        fixed
-        flat
-        :color="bg"
-        v-scroll="updateScroll"
-        elevate-on-scroll
-    >
-        <v-container class="d-flex">
-            <div class="d-flex align-center">
-                <v-img
-                    alt="Logo"
-                    class=""
-                    contain
-                    min-width="100"
-                    :src="logo"
-                    width="250px"
-                    :height= "logoHeight"
-                />
-            </div>
+    <div>
+        <v-app-bar
+            fixed
+            flat
+            :color="bg"
+            v-scroll="updateScroll"
+            elevate-on-scroll
+        >
+            <v-container class="d-flex">
+                <div class="d-flex align-center">
+                    <v-img
+                        alt="Logo"
+                        class=""
+                        contain
+                        min-width="100"
+                        :src="logo"
+                        width="250px"
+                        :height= "logoHeight"
+                    />
+                </div>
 
-            <v-spacer></v-spacer>
-            <div class="nav">
-                <v-menu 
-                    bottom
-                    transition="slide-x-transition"
-                    close-delay="170"
-                    offset-y 
-                    class="browseBtn"
+                <v-spacer></v-spacer>
+                <div class="nav hidden-sm-and-down">
+                    <v-menu 
+                        bottom
+                        transition="slide-x-transition"
+                        close-delay="170"
+                        offset-y 
+                        class="browseBtn"
+                        close-on-content-click
+                    >
+                        <template v-slot:activator="{ on, attrs }">
+                            <v-btn
+                                text
+                                tile
+                                :color="menuColor"
+                                v-bind="attrs"
+                                v-on="on"
+                            >
+                                Browse Opportunity   
+                                <v-icon class="ml-2">mdi-chevron-down</v-icon> 
+                            </v-btn>
+                        </template>
+                        <v-list class="nav-list parent" >
+                            <v-list-item
+                                class="pr-0"
+                                style="border-bottom: 1px solid rgba(255,255,255,0.6);"
+                            >
+                                <router-link to="/Browse">
+                                    <v-list-item-title style="line-height: 47px;">Any Opportunity</v-list-item-title>
+                                </router-link>
+                            </v-list-item>
+                            <div
+                                v-for="opportunity in opportunities"
+                                :key="opportunity.id"
+                                class="main-list"
+                            >
+                                <v-list-item
+                                    @click="opp(opportunity.id)"
+                                    v-if="!opportunity.subList"
+                                    class="pr-0"
+                                >
+                                    <v-list-item-title style="line-height: 47px;" >{{ opportunity.title }}</v-list-item-title>
+                                </v-list-item>
+                                <v-list-item
+                                    @click="opp(opportunity.id)"
+                                    v-else
+                                    class="pr-0"
+                                >
+                                    <v-menu 
+                                        open-on-hover
+                                        offset-x 
+                                        class="browseBtn"
+                                    >
+                                        <template v-slot:activator="{ on, attrs }">
+                                            <v-list-item-title 
+                                                v-bind="attrs"
+                                                v-on="on"
+                                                style="line-height: 47px;" 
+                                                class="d-flex justify-space-between" 
+                                            >
+                                                {{ opportunity.title }}
+                                                <v-icon class="mr-2 white--text" color="white">mdi-plus</v-icon> 
+                                            </v-list-item-title>
+                                        </template>
+                                        <v-list class="child">
+                                            <v-list-item
+                                                v-for="subList in opportunity.subList"
+                                                :key="subList.id"
+                                                @click="opp(subList.id)"
+                                            >
+                                                <v-list-item-title style="line-height: 47px;"  >{{ subList.title }}</v-list-item-title>
+                                            </v-list-item>
+                                        </v-list>
+                                    </v-menu>
+                                </v-list-item>
+                            </div>
+                        </v-list>
+                    </v-menu>
+                    <v-btn
+                        text
+                        tile
+                        :color="menuColor"
+                    >
+                        <router-link to="/post">
+                            Post an Opportunity   
+                        </router-link>
+                    </v-btn>
+                    <v-menu offset-y class="searchBtn">
+                        <template v-slot:activator="{ on, attrs }">
+                            <v-btn 
+                                icon
+                                tile
+                                :color="menuColor"
+                                v-bind="attrs"
+                                v-on="on"
+                                text
+                            >
+                                <v-icon>
+                                    mdi-magnify
+                                </v-icon>
+                            </v-btn>
+                        </template>
+                        <div 
+                            class="d-flex justify-between align-center pa-2 searchDiv"
+                            @click.stop.prevent 
+                        >
+                                <v-autocomplete
+                                    v-model="select"
+                                    :loading="loading"
+                                    :items="items"
+                                    :search-input.sync="search"
+                                    class="mx-3"
+                                    flat
+                                    hide-no-data
+                                    hide-details
+                                    placeholder="Start Typing to Search..."
+                                    solo
+                                ></v-autocomplete>
+                                
+
+                                <v-btn
+                                    color="primary"
+                                    @click="find()"
+                                >
+                                    Search
+                                </v-btn>
+                        </div>
+                    </v-menu>
+                </div>
+                
+
+                <v-app-bar-nav-icon 
+                    :color="menuColor"
+                    @click= "sideNavbar = !sideNavbar" 
+                    class="hidden-md-and-up"
                 >
-                    <template v-slot:activator="{ on, attrs }">
-                        <v-btn
-                            text
-                            tile
-                            :color="menuColor"
-                            v-bind="attrs"
-                            v-on="on"
+                </v-app-bar-nav-icon>
+            </v-container>
+        </v-app-bar>
+        <v-navigation-drawer 
+            v-model="sideNavbar"
+            absolute
+            temporary
+            width= "300"
+            max-width= "90vw" 
+            background-color= "white"
+        >
+            <v-list-item class="black--text">
+                <v-list-item-content>
+                    <v-list-item-title 
+                        class="text-center d-grid justify-center mb-4"
+                        width="100%"
+                    >
+                        <v-img
+                            :src="logo2"
+                            height="65"
+                            width="61"
+                            class="mx-auto"
                         >
+                        </v-img>
+                    </v-list-item-title>
+                    
+                    <v-list-item-title class="text-h6 text-center">
+                        Nextive Solution
+                    </v-list-item-title>
+                </v-list-item-content>
+            </v-list-item>
+
+            <v-divider></v-divider>
+
+            <v-list
+                max-height="80vh"
+                class="overflow-y-auto black--text"
+                background-color="white"
+                style="background-color: white !important"
+            >
+                <v-list-item>
+                    <v-btn
+                        text
+                        tile
+                    >
+                        <router-link to="/Browse">
                             Browse Opportunity   
-                            <v-icon class="ml-2">mdi-chevron-down</v-icon> 
-                        </v-btn>
-                    </template>
-                    <v-list class="nav-list parent">
-                        <v-list-item
-                            class="pr-0"
-                            style="border-bottom: 1px solid rgba(255,255,255,0.7);"
-                        >
-                            <router-link to="/Browse">
-                                <v-list-item-title style="line-height: 47px;">Any Opportunity</v-list-item-title>
-                            </router-link>
-                        </v-list-item>
+                        </router-link>
+                    </v-btn>
+                </v-list-item>
+                <v-list-item>
+                    <v-list class="ps-5 grey--text" style="background-color: white !important">
                         <div
                             v-for="opportunity in opportunities"
                             :key="opportunity.id"
                         >
                             <v-list-item
                                 @click="opp(opportunity.id)"
-                                v-if="!opportunity.subList"
                                 class="pr-0"
-                                style="border-bottom: 1px solid rgba(255,255,255,0.7);"
+                                style="border-bottom: 1px solid rgba(0,0,0,0.3);"
                             >
-                                <v-list-item-title style="line-height: 47px;" >{{ opportunity.title }}</v-list-item-title>
-                            </v-list-item>
-                            <v-list-item
-                                @click="opp(opportunity.id)"
-                                v-else
-                                class="pr-0"
-                                style="border-bottom: 1px solid rgba(255,255,255,0.7);"
-                            >
-                                <v-menu 
-                                    open-on-hover
-                                    offset-x 
-                                    class="browseBtn"
+                                <v-list-item-title 
+                                    style="color:#222;"
                                 >
-                                    <template v-slot:activator="{ on, attrs }">
-                                        <v-list-item-title 
-                                            v-bind="attrs"
-                                            v-on="on"
-                                            style="line-height: 47px;" 
-                                            class="d-flex justify-space-between" 
-                                        >
-                                            {{ opportunity.title }}
-                                            <v-icon class="mr-2 white--text" color="white">mdi-plus</v-icon> 
-                                        </v-list-item-title>
-                                    </template>
-                                    <v-list class="child">
-                                        <v-list-item
-                                            v-for="subList in opportunity.subList"
-                                            :key="subList.id"
-                                            @click="opp(subList.id)"
-                                            class="pr-0"
-                                            style="border-bottom: 1px solid rgba(255,255,255,0.7);"
-                                        >
-                                            <v-list-item-title style="line-height: 47px;"  >{{ subList.title }}</v-list-item-title>
-                                        </v-list-item>
-                                    </v-list>
-                                </v-menu>
+                                    {{ opportunity.title }}
+                                </v-list-item-title>
+                                
                             </v-list-item>
+                            <v-list v-show="opportunity.subList" class="nav-list ps-5" style="background-color: white !important;">
+                                <v-list-item
+                                    v-for="subList in opportunity.subList"
+                                    :key="subList.id"
+                                    @click="opp(subList.id)"
+                                >
+                                    <v-list-item-title   
+                                        style="border-bottom: 1px solid rgba(0,0,0,0.3); color:#222;"
+                                    >
+                                        {{ subList.title }}
+                                    </v-list-item-title>
+                                </v-list-item>
+                            </v-list>
                         </div>
                     </v-list>
-                </v-menu>
-                <v-btn
-                    text
-                    tile
-                    :color="menuColor"
-                >
-                    <router-link to="/post">
-                        Post an Opportunity   
-                    </router-link>
-                </v-btn>
-                <v-menu offset-y class="searchBtn">
-                    <template v-slot:activator="{ on, attrs }">
-                        <v-btn 
-                            icon
-                            tile
-                            :color="menuColor"
-                            v-bind="attrs"
-                            v-on="on"
-                            text
-                        >
-                            <v-icon>
-                                mdi-magnify
-                            </v-icon>
-                        </v-btn>
-                    </template>
+                </v-list-item>
+                <v-list-item>
+                    <v-btn
+                        text
+                        tile
+                    >
+                        <router-link to="/Post">
+                            Post an Opportunity   
+                        </router-link>
+                    </v-btn>
+                </v-list-item>
+                <v-list-item>
                     <div 
-                        class="d-flex justify-between align-center pa-2 searchDiv"
+                        class="pa-2"
                         @click.stop.prevent 
                     >
-                            <v-autocomplete
-                                v-model="select"
-                                :loading="loading"
-                                :items="items"
-                                :search-input.sync="search"
-                                class="mx-3"
-                                flat
-                                hide-no-data
-                                hide-details
-                                placeholder="Start Typing to Search..."
-                                solo
-                            ></v-autocomplete>
-                            
-
-                            <v-btn
-                                color="primary"
-                            >
-                                Search
-                            </v-btn>
+                        <v-autocomplete
+                            v-model="select"
+                            :loading="loading"
+                            :items="items"
+                            :search-input.sync="search"
+                            class="mx-3"
+                            flat
+                            hide-no-data
+                            hide-details
+                            placeholder="Start Typing to Search..."
+                            solo
+                        ></v-autocomplete>
+                        
+                        <v-btn
+                            color="primary"
+                            @click="find()"
+                        >
+                            Search
+                        </v-btn>
                     </div>
-                </v-menu>
-            </div>
-            
-
-            <v-app-bar-nav-icon class="d-md-none d-sm-flex justify-end"></v-app-bar-nav-icon>
-        </v-container>
-    </v-app-bar>
+                </v-list-item>
+            </v-list>
+        </v-navigation-drawer>
+    </div>
 </template>
 
 <script>
@@ -308,6 +433,7 @@
                     title: 'Miscellaneous', 
                 },
             ],
+            sideNavbar: false, 
         }),
         watch: {
             search (val) {
@@ -342,8 +468,17 @@
             async opp(i){
                 localStorage.setItem("opportunity", i); 
                 this.$router.push('/Browse'); 
+            },
+            async find(){
+                console.log(this.select); 
+                console.log(this.search); 
+                localStorage.setItem("search", this.search); 
+                this.$router.push('/Search'); 
             }
         },
+        mounted() {
+            this.updateScroll(); 
+        }
     }
 </script>
 
@@ -355,7 +490,7 @@
                 height: 60px; 
             }
             .v-image__image.v-image__image--contain{
-                background-position: center left !important;
+                background-position: left center !important;
             }
             .v-responsive__content{
                 width: 250px !important;
@@ -367,6 +502,13 @@
         color: rgb(255,255,255) !important;
         .v-list-item__title{
             color: white; 
+        }
+    }
+    .v-autocomplete__content .theme--light.v-list {
+        background: white !important;
+        color: #222 !important;
+        .v-list-item__title{
+            color: #222; 
         }
     }
     .parent:hover > .child{

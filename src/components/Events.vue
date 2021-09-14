@@ -3,8 +3,8 @@
         <v-container>
             <swiper class="swiper" :options="swiperOption">
                 <swiper-slide v-for="event in events" :key="event.id">
-                    <router-link to="/">
-                        <v-card class="card">
+
+                        <v-card class="card" @click="opp(event.id)">
                             <v-img
                                 :src="event.url"
                             ></v-img>
@@ -12,7 +12,10 @@
                                 <v-icon small class="mr-3">{{event.catIcon}}</v-icon>
                                 <span class="text-uppercase">{{event.category}}</span>
                             </v-card-text>
-                            <v-card-title class="pt-0">
+                            <v-card-title 
+                                class="pt-0"
+                                @click="opp(event.id)"
+                            >
                                 <h5> {{event.title}} </h5>
                             </v-card-title>
                                 <v-card-actions>
@@ -23,7 +26,7 @@
                                     </v-card-text>
                                 </v-card-actions>
                         </v-card>
-                    </router-link>
+                    
                 </swiper-slide>
             </swiper>
         </v-container>
@@ -99,15 +102,25 @@
                 },
                 768: {
                     slidesPerView: 2,
-                    spaceBetween: 5
+                    spaceBetween: 2
                 }, 
                 600: {
+                    slidesPerView: 1,
+                    spaceBetween: 0
+                },
+                300: {
                     slidesPerView: 1,
                     spaceBetween: 0
                 }
             }
         }
     }), 
+    methods: {
+        async opp(i){
+            localStorage.setItem('oppId', i); 
+            this.$router.push({ path: '/Opportunity' })
+        }
+    }
   }
 </script>
 

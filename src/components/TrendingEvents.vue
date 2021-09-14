@@ -27,14 +27,17 @@
                             </v-img>
                         </v-list-item-avatar>
                         
-                        <v-list-item-content>
+                        <v-list-item-content 
+                            :style="$vuetify.breakpoint.mdAndUp ? 'min-width: 280px' : '' "
+                        >
                             <p class="">
                                 <small>{{TrendingEvent.category}}</small>
                             </p>
-                            <v-list-item-title class="text-p font-weight-thin my-3">
-                                <router-link to="">
-                                    {{TrendingEvent.title}}
-                                </router-link>
+                            <v-list-item-title 
+                                class="text-p font-weight-thin my-3"
+                                @click="opp(TrendingEvent.id)"    
+                            >
+                                {{TrendingEvent.title}}
                             </v-list-item-title>
                         </v-list-item-content>
                     </v-list-item>
@@ -99,6 +102,11 @@
                 }
             ],
         }),
-
+        methods: {
+            async opp(i){
+                localStorage.setItem('oppId', i); 
+                this.$router.push({ path: '/Opportunity' })
+            }
+        }
     }
-</script>
+</script> 

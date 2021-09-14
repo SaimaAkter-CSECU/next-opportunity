@@ -5,52 +5,54 @@
             <div class="banner-text-content white--text text-center mt-sm-9" >
                 <h1>Explore New Opportunities!</h1>
                 <h3>Or, <span class="post-text"><router-link to="/post">post an opportunity</router-link></span> for <span class="text-decoration-underline">free</span></h3>
-                <v-form class="py-1 mt-5">
-                    <v-container class="container--fluid">
-                        <v-row>
-                            <v-col
-                                cols="12"
-                                xs="12"
-                                sm="5"
-                                align="center"
-                            >
-                                <v-select
-                                    v-model="selectOpp"
-                                    :items="opportunity"
-                                    item-text="name"
-                                    item-value="id"
-                                    solo
-                                ></v-select>
-                            </v-col>
-                            <v-col
-                                cols="12"
-                                xs="12"
-                                sm="5"
-                            >
-                                <v-select
-                                    v-model="selectReg"
-                                    :items="regions"
-                                    item-text="region"
-                                    item-value="id"
-                                    solo
-                                ></v-select>
-                            </v-col>
-                            <v-col
-                                cols="12"
-                                xs="12"
-                                sm="2"
-                            >
-                                <v-btn
-                                    color="primary"
-                                    elevation="2"
-                                    large
+                <v-container>
+                    <v-form class="py-1 mt-5">
+                        <v-container>
+                            <v-row class="mx-0">
+                                <v-col
+                                    cols="12"
+                                    xs="12"
+                                    sm="5"
                                 >
-                                    Explore
-                                </v-btn>
-                            </v-col>
-                        </v-row>
-                    </v-container>
-                </v-form>
+                                    <v-select
+                                        v-model="selectOpp"
+                                        :items="opportunity"
+                                        item-text="name"
+                                        item-value="id"
+                                        solo
+                                    ></v-select>
+                                </v-col>
+                                <v-col
+                                    cols="12"
+                                    xs="12"
+                                    sm="5"
+                                >
+                                    <v-select
+                                        v-model="selectReg"
+                                        :items="regions"
+                                        item-text="region"
+                                        item-value="id"
+                                        solo
+                                    ></v-select>
+                                </v-col>
+                                <v-col
+                                    cols="12"
+                                    sm="2"
+                                    xs="12"
+                                >
+                                    <v-btn
+                                        color="primary"
+                                        elevation="2"
+                                        large
+                                        @click="find()"
+                                    >
+                                        Explore
+                                    </v-btn>
+                                </v-col>
+                            </v-row>
+                        </v-container>
+                    </v-form>
+                </v-container>
             </div>
         </div>
     </div>
@@ -123,5 +125,10 @@
                 },
             ],
         }),
+        methods: {
+            async find(){
+                this.$router.push('/Browse');
+            }
+        }
     }
 </script>

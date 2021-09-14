@@ -1,12 +1,17 @@
 <template>
     <div 
         id="SubPageBanner"
-        :style="($route.path == '/Opportunity') ? 'background-color: #f4f4ef; color: #222222' : 'background-color: rgba(0,0,0,.4); color: #ffffff'"
+        :style="($route.path == '/Opportunity' || $route.path == '/Search') ? 'background-color: #f4f4ef; color: #222222' : 'background-color: rgba(0,0,0,.4); color: #ffffff'"
     >
         <v-container 
             class="ps-md-7 ps-sm-5"
         >
-            <h1 class="font-weight-bold">{{pageTitle}}</h1>
+            <div 
+                class="font-weight-bold banner-title"
+                v-bind:class="$vuetify.breakpoint.mdAndUp ? 'text-h2' : 'text-h3' "
+            >
+                {{pageTitle}}
+            </div>
         </v-container>
     </div>
 </template>
@@ -16,6 +21,7 @@
         name: 'SubPageBanner',
         data: () => ({
             pageTitle: '', 
+            searchCount: 25,
             opportunities: [
                 {
                     id: 1, 
@@ -267,9 +273,15 @@
                         this.pageTitle = to.meta;
                     }
                     else{
-                        let id = localStorage.getItem('oppId'); 
-                        let data = this.opportunities.find(x => x.id == id);
-                        this.pageTitle = data.title; 
+                        if(this.$route.path == '/Search'){
+                            let searchItem = localStorage.getItem('search'); 
+                            this.pageTitle = `${this.searchCount} search results for: ${searchItem}`;
+                        }
+                        else{
+                            let id = localStorage.getItem('oppId'); 
+                            let data = this.opportunities.find(x => x.id == id);
+                            this.pageTitle = data.title; 
+                        }
                     }
                 }
             },

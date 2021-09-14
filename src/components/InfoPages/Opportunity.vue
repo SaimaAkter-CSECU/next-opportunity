@@ -1,6 +1,6 @@
 <template>
     <div id="opportunity">
-        <v-row>
+        <v-row class="ma-0">
             <v-col
                 cols="12"
                 sm="2"
@@ -39,8 +39,9 @@
                     <v-btn 
                         large 
                         tile
-                        color="indigo darken-4"
-                        class="white--text text-p font-weight-thin"
+                        color="light-blue darken-3"
+                        class="white--text font-weight-thin"
+                        v-bind:class="$vuetify.breakpoint.smAndUp ? 'text-p' : 'caption' "
                         width="33%"
                         elevation="0"
                         @click="facebookShare()"
@@ -57,7 +58,8 @@
                         large 
                         tile
                         color="light-blue lighten-3"
-                        class="white--text text-p font-weight-thin"
+                        class="white--text font-weight-thin"
+                        v-bind:class="$vuetify.breakpoint.smAndUp ? 'text-p' : 'caption' "
                         width="33%"
                         elevation="0"
                         @click="twitterShare()"
@@ -74,7 +76,8 @@
                         large 
                         tile
                         color="yellow lighten-2"
-                        class="text-p font-weight-thin"
+                        class="font-weight-thin"
+                        v-bind:class="$vuetify.breakpoint.smAndUp ? 'text-p' : 'caption' "
                         width="33%"
                         elevation="0"
                         @click="emailSubscribe()"
@@ -97,12 +100,28 @@
                 </div>
 
                 <div class="d-flex align-center">
-                    <h5 class="font-weight-regular">Location : </h5> <span class="text-h6 font-weight-thin ml-2">{{location}}</span>
+                    <div 
+                        class="font-weight-regular"
+                        v-bind:class="$vuetify.breakpoint.smAndUp ? 'text-h5' : 'text-h6' "
+                    >
+                        Location : 
+                    </div> 
+                    <span 
+                        class="font-weight-thin ml-2"
+                        v-bind:class="$vuetify.breakpoint.smAndUp ? 'text-h6' : 'text-p' "
+                    >
+                        {{location}}
+                    </span>
                 </div>
                 <div class="mt-5">
                     <div class="d-flex align-center">
                         <v-icon class="mr-2">mdi-seal</v-icon>
-                        <h5 class="font-weight-regular">Benefits  </h5>
+                        <div 
+                            class="font-weight-regular"
+                            v-bind:class="$vuetify.breakpoint.smAndUp ? 'text-h5' : 'text-h6' "
+                        >
+                            Benefits
+                        </div>
                     </div>
                     <div class="mt-3 ml-9" v-html="benefit">
                     </div>
@@ -111,13 +130,29 @@
                 <div class="mt-5">
                     <div class="d-flex align-center">
                         <v-icon class="mr-2">mdi-clipboard-check</v-icon>
-                        <h5 class="font-weight-regular">Elligibilities  </h5>
+                        <div 
+                            class="font-weight-regular"
+                            v-bind:class="$vuetify.breakpoint.smAndUp ? 'text-h5' : 'text-h6' "
+                        >
+                            Elligibilities
+                        </div>
                     </div>
                     <div class="mt-3 ml-9" v-html="elligibility">
                     </div>
                 </div>
                 <div class="d-flex align-center mt-5">
-                    <h5 class="font-weight-regular">Elligible Regions : </h5> <span class="text-h6 font-weight-thin ml-2">{{elligible_regions}}</span>
+                    <div 
+                        class="font-weight-regular"
+                        v-bind:class="$vuetify.breakpoint.smAndUp ? 'text-h5' : 'text-h6' "
+                    >
+                        Elligible Regions : 
+                    </div> 
+                    <span 
+                        class="font-weight-thin ml-2"
+                        v-bind:class="$vuetify.breakpoint.smAndUp ? 'text-h6' : 'text-p' "
+                    >
+                        {{elligible_regions}}
+                    </span>
                 </div>
             </v-col>
             <v-col
@@ -129,7 +164,12 @@
                         <v-icon class="mr-2">
                             mdi-application-edit
                         </v-icon>
-                        <h5 class="font-weight-regular">Application Process : </h5>
+                        <div 
+                            class="font-weight-regular"
+                            v-bind:class="$vuetify.breakpoint.smAndUp ? 'text-h5' : 'text-h6' "
+                        >
+                            Application Process : 
+                        </div> 
                     </div>
                     <div class="my-3 subtitle-2" v-html="application_process"></div>
                     <div class="opportunity_quote my-9">
@@ -137,12 +177,14 @@
                     </div>
 
                     <div class="pt-5 mb-3">
-                        <a v-show="apply_link" :href="apply_link" class="mr-3">
+                        <a v-show="apply_link" :href="apply_link">
                             <v-btn
                                 tile
                                 large 
                                 outlined
                                 color="blue darken-4"
+                                class="my-1 mr-3"
+                                width="150"
                             >
                                 APPLY LINK
                             </v-btn>
@@ -153,14 +195,14 @@
                                 large 
                                 outlined
                                 color="blue darken-4"
+                                class="my-1 mr-3"
+                                width="150"
                             >
                                 Official LINK
                             </v-btn>
                         </a>
                     </div>
                 </div>
-
-                
             </v-col>
             <v-col 
                 cols="12"
@@ -188,7 +230,8 @@
                             large 
                             tile
                             color="light-blue darken-3"
-                            class="white--text text-p font-weight-thin"
+                            class="white--text font-weight-thin"
+                            v-bind:class="$vuetify.breakpoint.smAndUp ? 'text-p' : 'caption' "
                             width="33%"
                             elevation="0"
                             @click="facebookShare()"
@@ -205,7 +248,8 @@
                             large 
                             tile
                             color="light-blue lighten-3"
-                            class="white--text text-p font-weight-thin"
+                            class="white--text font-weight-thin"
+                            v-bind:class="$vuetify.breakpoint.smAndUp ? 'text-p' : 'caption' "
                             width="33%"
                             elevation="0"
                             @click="twitterShare()"
@@ -222,7 +266,8 @@
                             large 
                             tile
                             color="yellow lighten-2"
-                            class="text-p font-weight-thin"
+                            class="font-weight-thin"
+                            v-bind:class="$vuetify.breakpoint.smAndUp ? 'text-p' : 'caption' "
                             width="33%"
                             elevation="0"
                             @click="emailSubscribe()"

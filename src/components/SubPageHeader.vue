@@ -50,64 +50,6 @@
                                 Browse Opportunity   
                             </v-btn>
                         </template>
-                        <!-- <v-list class="nav-list1">
-                            <v-list-item
-                                class="pr-0"
-                                style="border-bottom: 1px solid rgba(255,255,255,0.1);"
-                            >
-                                <router-link to="/Browse">
-                                    <v-list-item-title style="line-height: 47px;">Any Opportunity</v-list-item-title>
-                                </router-link>
-                            </v-list-item>
-                            <div
-                                v-for="opportunity in opportunities"
-                                :key="opportunity.id"
-                            >
-                                <v-list-item
-                                    @click="opp(opportunity.id)"
-                                    v-if="!opportunity.subList"
-                                    class="pr-0"
-                                    style="border-bottom: 1px solid rgba(255,255,255,0.1);"
-                                >
-                                    <v-list-item-title style="line-height: 47px;" >{{ opportunity.title }}</v-list-item-title>
-                                </v-list-item>
-                                <v-list-item
-                                    @click="opp(opportunity.id)"
-                                    v-else
-                                    class="pr-0"
-                                    style="border-bottom: 1px solid rgba(255,255,255,0.1);"
-                                >
-                                    <v-menu 
-                                        open-on-hover
-                                        offset-x
-                                        class="browseBtn"
-                                        sub-group
-                                        :close-on-click="false"
-                                        :close-on-content-click="false"
-                                    >
-                                        <template v-slot:activator="{ on, attrs }">
-                                            <v-list-item-title 
-                                                v-bind="attrs"
-                                                v-on="on"
-                                                style="line-height: 47px;" 
-                                            >
-                                                {{ opportunity.title }}
-                                            </v-list-item-title>
-                                        </template>
-                                        <v-list
-                                        >
-                                            <v-list-item
-                                                v-for="subList in opportunity.subList"
-                                                :key="subList.id"
-                                                @click="opp(subList.id)"
-                                            >
-                                                <v-list-item-title style="line-height: 47px;"  >{{ subList.title }}</v-list-item-title>
-                                            </v-list-item>
-                                        </v-list>
-                                    </v-menu>
-                                </v-list-item>
-                            </div>
-                        </v-list> -->
                         <v-list class="nav-list parent">
                             <v-list-item
                                 class="pr-0"
@@ -145,8 +87,10 @@
                                                 v-bind="attrs"
                                                 v-on="on"
                                                 style="line-height: 47px;" 
+                                                class="d-flex justify-space-between" 
                                             >
                                                 {{ opportunity.title }}
+                                                <v-icon class="mr-2 white--text" color="grey">mdi-plus</v-icon>
                                             </v-list-item-title>
                                         </template>
                                         <v-list class="child">
@@ -155,7 +99,6 @@
                                                 :key="subList.id"
                                                 @click="opp(subList.id)"
                                                 class="pr-0"
-                                                style="border-bottom: 1px solid rgba(255,255,255,0.2);"
                                             >
                                                 <v-list-item-title style="line-height: 47px;"  >{{ subList.title }}</v-list-item-title>
                                             </v-list-item>
@@ -210,6 +153,7 @@
 
                                 <v-btn
                                     color="primary"
+                                    @click="find"
                                 >
                                     Search
                                 </v-btn>
@@ -229,6 +173,7 @@
             v-model="sideNavbar"
             absolute
             temporary
+            min-width= "90vw"
         >
             <v-list-item>
                 <v-list-item-content>
@@ -325,6 +270,7 @@
 
                         <v-btn
                             color="primary"
+                            @click="find(); sideNavbar=false"
                         >
                             Search
                         </v-btn>
@@ -507,9 +453,22 @@
         }), 
         methods: {
             async opp(i){
-                localStorage.setItem("opportunity", i); 
-                this.$router.push('/Browse');
+                if(this.$route.path == '/Browse'){
+                    localStorage.setItem("opportunity", i); 
+                }
+                else{
+                    localStorage.setItem("opportunity", i); 
+                    this.$router.push('/Browse');
+                }
+            },
+            async find(){
+                
+                console.log(this.select); 
+                console.log(this.search); 
+                localStorage.setItem("search", this.search); 
+                this.$router.push('/Search'); 
             }
+
         },
     }
 </script> 

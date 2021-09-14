@@ -17,14 +17,17 @@
                             </v-img>
                         </v-list-item-avatar>
                         
-                        <v-list-item-content>
+                        <v-list-item-content 
+                            :style="$vuetify.breakpoint.mdAndUp ? 'min-width: 280px' : '' "
+                        >
                             <p class="">
                                 <small>{{deadlineEvent.category}}</small>
                             </p>
-                            <v-list-item-title class="text-h6 font-weight-thin my-3">
-                                <router-link to="">
-                                    {{deadlineEvent.title}}
-                                </router-link>
+                            <v-list-item-title 
+                                class="text-h6 font-weight-thin my-3"
+                                @click="opp(deadlineEvent.id)"
+                            >
+                                {{deadlineEvent.title}}
                             </v-list-item-title>
                             <v-list-item-subtitle>
                                 {{deadlineEvent.location}} 
@@ -121,6 +124,11 @@
                 }
             ],
         }),
-
+        methods: {
+            async opp(i){
+                localStorage.setItem('oppId', i); 
+                this.$router.push({ path: '/Opportunity' })
+            }
+        }
     }
 </script>

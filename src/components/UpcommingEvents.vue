@@ -1,8 +1,8 @@
 <template>
     <section id="upcomming-events" class="py-8">
         <v-container>
-            <v-row>
-                <v-col cols="12" sm="12" md="9" class="section-title-div pl-0">
+            <v-row class="mx-0">
+                <v-col cols="12" md="12" lg="9" class="section-title-div pl-0">
                     <span class="section-title">
                         <v-icon class="pr-3">mdi-timer-sand</v-icon>
                         <span class="section-title-text pb-4 pr-3">Upcomming Events</span>
@@ -10,26 +10,25 @@
                 </v-col>
             </v-row>
             
-            <v-row class="mb-5">
+            <v-row class="mb-5 mx-0">
                 <v-col
                     cols="12"
-                    md="9"
-                    sm="12"
-                    
+                    lg="9"
+                    md="12"
                 >
                     <DeadlineEvents />
                 </v-col>
                 <v-col
                     cols="12"
-                    md="3"
-                    sm="12"
+                    lg="3"
+                    md="12"
                 >
                     <TrendingEvents />
                 </v-col>
             </v-row>
 
-            <v-row class="my-5">
-                <v-col cols="12" sm="12" md="9">
+            <v-row class="my-5 mx=0">
+                <v-col cols="12" md="12" lg="9">
                     <div class="section-title-div pb-3" width="100%">
                         <span class="section-title">
                             <v-icon class="pr-3">mdi-plus-thick</v-icon>
@@ -39,12 +38,11 @@
                 </v-col>
             </v-row>
             
-            <v-row>
+            <v-row class="mx-0">
                 <v-col
                     cols="12"
-                    md="9"
-                    sm="12"
-                    
+                    lg="9"
+                    md="12"
                 >
                     <LatestEvents />
                 </v-col>

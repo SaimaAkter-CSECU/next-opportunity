@@ -3,7 +3,7 @@
         id="SubPageSidebar" 
         class="pl-md-5 pl-sm-3 pb-5"
     >
-        <v-container fluid>
+        <div class="container--fluid">
             <div class="d-flex align-center mb-5 sidebarSearch">
                 <v-text-field
                     placeholder="Search"
@@ -22,6 +22,7 @@
                 <div class="mt-5">
                     <iframe 
                         min-width= "260"
+                        width="100%"
                         max-width="100%" 
                         height="200" 
                         src="https://www.youtube.com/embed/TFD6YbQX3-A" 
@@ -60,16 +61,17 @@
                                 </v-img>
                             </v-list-item-avatar>
                             
-                            <v-list-item-content>
+                            <v-list-item-content 
+                                :style="$vuetify.breakpoint.mdAndUp ? 'min-width: 280px' : '' "
+                            >
                                 <p class="">
                                     <small>{{trending.category}}</small>
                                 </p>
                                 <v-list-item-title 
                                     class="text-p font-weight-thin mt-1 mb-3 text-wrap" 
+                                    @click="opp(trending.id)"
                                 >
-                                    <router-link to="">
-                                        {{trending.title}}
-                                    </router-link>
+                                    {{trending.title}}
                                 </v-list-item-title>
                             </v-list-item-content>
                         </v-list-item>
@@ -132,7 +134,7 @@
                     </div>
                 </div>
             </div>
-        </v-container>
+        </div>
     </div>
 </template>
 
@@ -180,5 +182,11 @@
                 }
             ],
         }),
+        methods: {
+            async opp(i){
+                localStorage.setItem('oppId', i); 
+                this.$router.push({ path: '/Opportunity' })
+            }
+        }
     }
 </script>

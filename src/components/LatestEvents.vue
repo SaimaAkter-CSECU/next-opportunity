@@ -5,6 +5,7 @@
                 <v-card
                     class="mx-auto"
                     max-width="100%"
+                    @click="opp(latestEvents.id)"
                 >
                     <v-list-item three-line class="pr-0">
                         <v-list-item-avatar
@@ -17,7 +18,9 @@
                             </v-img>
                         </v-list-item-avatar>
                         
-                        <v-list-item-content>
+                        <v-list-item-content 
+                            :style="$vuetify.breakpoint.mdAndUp ? 'min-width: 280px' : '' "
+                        >
                             <p class="">
                                 <small>{{latestEvents.category}}</small>
                             </p>
@@ -120,6 +123,11 @@
                 }
             ],
         }),
-
+        methods: {
+            async opp(i){
+                localStorage.setItem('oppId', i); 
+                this.$router.push({ path: '/Opportunity' })
+            }
+        }
     }
 </script>

@@ -6,6 +6,7 @@ import Browse from '../components/Browse.vue'
 import InfoPage from '../components/InfoPages/InfoPage.vue'
 
 import Opportunity from '../components/InfoPages/Opportunity.vue'
+import Search from '../components/InfoPages/Search.vue'
 import Post from '../components/InfoPages/Post.vue'
 import About from '../components/InfoPages/About.vue' 
 import Partners from '../components/InfoPages/Partners.vue'
@@ -47,6 +48,12 @@ const routes = [
                 path: '/Opportunity',
                 name: 'Opportunity',
                 component: Opportunity, 
+                meta: '',
+            },
+            {
+                path: '/Search',
+                name: 'Search',
+                component: Search, 
                 meta: '',
             },
             {

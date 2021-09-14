@@ -4,6 +4,8 @@
         rounded-sm
         class="backToTop white--text"
         v-bind:class=" (scrollPosition < 100)? 'd-none': 'd-flex' "
+        style="min-width: 40px"
+        transition="slide-x-reverse-transition"
         @click="toTop"
     >
         <v-icon large>mdi-chevron-up</v-icon>
@@ -25,7 +27,7 @@
             }
         },
         mounted() {
-            window.addEventListener("scroll", this.updateScroll);
+            window.addEventListener("scroll", this.updateScroll); 
         },
     }
 </script>

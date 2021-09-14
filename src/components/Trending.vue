@@ -31,10 +31,12 @@
                             <p class="">
                                 <small>{{trending.category}}</small>
                             </p>
-                            <v-list-item-title class="text-p font-weight-thin my-3" style="line-height:1.5 !important">
-                                <router-link to="">
-                                    {{trending.title}}
-                                </router-link>
+                            <v-list-item-title 
+                                class="text-p font-weight-thin my-3" 
+                                style="line-height:1.5 !important"
+                                @click="opp(trending.id)"
+                            >
+                                {{trending.title}}
                             </v-list-item-title>
                         </v-list-item-content>
                     </v-list-item>
@@ -99,6 +101,11 @@
                 }
             ],
         }),
-
+        methods: {
+            async opp(i){
+                localStorage.setItem('oppId', i); 
+                this.$router.push({ path: '/Opportunity' })
+            }
+        }
     }
 </script>

@@ -1,11 +1,11 @@
 <template>
     <div id="trendingEvents">
         <v-row>
-            <v-col cols="12" sm="12" md="8">
+            <v-col cols="12" md="12" lg="8">
                 <div class="section-title-div pb-3" width="100%">
                     <span class="section-title">
                         <v-icon class="pr-3">mdi-flash</v-icon>
-                        <span class="section-title-text pb-4 pr-3">YO Report 2019</span>
+                        <span class="section-title-text pb-4 pr-3">NEXT Report</span>
                     </span>
                 </div>
             </v-col>
