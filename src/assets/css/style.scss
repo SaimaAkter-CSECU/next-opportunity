@@ -27,7 +27,7 @@ body {
             }
         }
         p{
-            font-size: 1.125rem; 
+            font-size: 1.1rem; 
             font-weight: 300;
         }
         h1{
@@ -45,15 +45,15 @@ body {
             word-break: break-word;
         }
         h4{
-            font-size: 2rem; 
+            font-size: 1.75rem; 
             font-weight: 300;
         }
         h5{
-            font-size: 1.35rem; 
+            font-size: 1rem; 
             font-weight: thin;
         } 
         h6{
-            font-size: 1.125rem; 
+            font-size: 1rem; 
             font-weight: thin;
         }
     }
@@ -263,7 +263,7 @@ body {
             border-bottom: 1px solid #333; 
             .v-list-item__title{
                 color: #c2c8d0;
-                font-size: 1.15rem;
+                font-size: 1rem;
                 font-weight: 300;
                 &:hover{
                     color: white; 
