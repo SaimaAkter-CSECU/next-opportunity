@@ -30,7 +30,7 @@ body .v-application .section-title-div .section-title {
   border-bottom: 1px solid #222;
 }
 body .v-application p {
-  font-size: 1.125rem;
+  font-size: 1.1rem;
   font-weight: 300;
 }
 body .v-application h1 {
@@ -48,15 +48,15 @@ body .v-application h3 {
   word-break: break-word;
 }
 body .v-application h4 {
-  font-size: 2rem;
+  font-size: 1.75rem;
   font-weight: 300;
 }
 body .v-application h5 {
-  font-size: 1.35rem;
+  font-size: 1rem;
   font-weight: thin;
 }
 body .v-application h6 {
-  font-size: 1.125rem;
+  font-size: 1rem;
   font-weight: thin;
 }
 
